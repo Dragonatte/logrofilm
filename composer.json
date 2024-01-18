@@ -1,0 +1,13 @@
+{
+  "name": "rmb/logrofilm",
+  "type": "project",
+  "require": {
+    "phpmailer/phpmailer": "v6.9.1",
+    "ext-pdo": "*"
+  },
+  "autoload": {
+      "psr-4": {
+      "PHPMailer\\PHPMailer\\": "src/"
+      }
+  }
+}
