@@ -1,0 +1,11 @@
+### Node.js ###
+/node_modules
+
+### Visual Studio Code ###
+/.vscode
+
+### PHPComposer ###
+/vendor
+
+### PHPStorm ###
+/.idea
