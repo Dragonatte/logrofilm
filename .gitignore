@@ -9,3 +9,7 @@
 
 ### PHPStorm ###
 /.idea
+
+config.php
+custom-theme (1).json
+public/CSS/style.css
