@@ -163,7 +163,7 @@ a:hover::after
     transform: translateY(calc(-133% - 40px)) translateX(0px);
 }
 
-form>header
+form>.header
 {
 	@apply absolute -top-16 left-0 w-full h-16 text-center text-4xl text-white/50;
 }
@@ -647,4 +647,74 @@ footer .legal a
 footer .acceso a
 {
 	@apply text-start my-3 ml-9 mr-72 w-fit text-xl cursor-pointer;
+}
+
+.admin-body
+{
+	@apply bg-gray-200;
+}
+
+#admin-login-form
+{
+	@apply absolute
+		top-1/2 left-1/2
+		-translate-y-2/3 -translate-x-1/2
+		flex flex-col
+		items-center justify-center
+		bg-gray-900
+		rounded-xl
+		p-10
+		w-96
+		h-96;
+}
+
+#admin-login-form input
+{
+	@apply w-full h-8 border-b border-b-gray-200 bg-transparent text-gray-200 text-xl my-3 mt-8;
+}
+
+#admin-login-form input:focus
+{
+	@apply outline-none;
+}
+
+#admin-login-form .admin-header
+{
+	@apply text-3xl font-bold mb-6;
+}
+
+.admin-header h1
+{
+	@apply text-center text-gray-200;
+}
+
+#admin-login-form .admin-label {
+    @apply text-gray-400 text-lg w-full cursor-text;
+    transform: translateY(-133%);
+    transition: all 0.15s ease;
+}
+
+#admin-login-form input.written + .admin-label {
+		@apply text-gray-200;
+    transform: translateY(calc(-133% - 40px));
+}
+
+#admin-login-form input:focus + .admin-label {
+		@apply text-gray-200;
+    transform: translateY(calc(-133% - 40px));
+}
+
+#admin-login-form .admin-footer
+{
+	@apply flex items-center justify-center w-full h-16;
+}
+
+#admin-login-form .admin-login-button
+{
+	@apply bg-default-500 w-full text-gray-200 text-xl py-2 px-4 rounded-xl mt-8;
+}
+
+.admin-input-error
+{
+	@apply text-secondary-500 border-b-secondary-500 ;
 }

@@ -6,21 +6,32 @@
   <link rel="stylesheet" href="../../../public/CSS/style.css">
   <title>Sign</title>
 </head>
-<body>
-    <form action="login" method="post" class="wrapper" id="admin-login-form">
-	  <header>
+<body class="admin-body">
+    <form action="" method="post" class="wrapper" id="admin-login-form">
+	  <header class="admin-header">
         <h1 class="log-head">Iniciar sesión</h1>
 	  </header>
 
-      <input id="user" name="user" type="text" class="input">
-      <label for="user" class="anim-label">Usuario</label>
+    <input id="user" name="user" type="text" class="admin-input">
+		<label for="user" class="admin-label">Usuario</label>
 
-      <input id="pass" name="pass" type="password" class="input">
-      <label for="pass" class="anim-label">Contrase&ntilde;a</label>
+    <input id="pass" name="pass" type="password" class="admin-input">
+	  <label for="pass" class="admin-label">Contrase&ntilde;a</label>
 
-	  <div class="footer">
-        <button class="button">Iniciar sesión</button>
+	  <div class="admin-footer">
+        <button class="admin-login-button">Iniciar sesión</button>
 	  </div>
     </form>
+	<script src="../../../public/JS/admin/script.js"></script>
 </body>
 </html>
+
+<?php
+
+if (isset($user) && isset($pass)) {
+	$user = $_POST['user'];
+	$pass = $_POST['pass'];
+	if ($user == 'admin' && $pass == 'admin') {
+      header('Location: ../../admin/index.php');
+  }
+}
