@@ -3,6 +3,17 @@ window.onload = () => {
 	const registerForm = document.getElementById('registerForm');
 	const toLogin = document.getElementById('toLog');
 	const toRegister = document.getElementById('toReg');
+	const inputs = Array.from(document.querySelectorAll('.input'));
+
+	inputs.forEach(input => {
+		input.addEventListener('blur', () => {
+			if (input.value.length > 0) {
+				input.classList.add('written');
+			} else {
+				input.classList.remove('written');
+			}
+		});
+	});
 
 	const resetAnimation = () => {
 		loginForm.classList.remove('slide-right');

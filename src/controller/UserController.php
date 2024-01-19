@@ -1,11 +1,10 @@
 <?php
 
-namespace PHPMailer\PHPMailer\controller;
+namespace RMB\Logrofilm\controller;
 
 use Exception;
-use PHPMailer\PHPMailer\model\BDController;
-use PHPMailer\PHPMailer\model\User;
-use PHPMailer\PHPMailer\model\UserModel;
+use RMB\Logrofilm\model\User;
+use RMB\Logrofilm\model\UserModel;
 use PHPMailer\PHPMailer\PHPMailer;
 
 class UserController
@@ -27,7 +26,7 @@ class UserController
         }
     }
 
-    private static function sendValidatorEmail(User $user)
+    private static function sendValidatorEmail(User $user): void
     {
         $mail = new PHPMailer(true);
         $email = $user->getEmail();

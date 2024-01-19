@@ -1,6 +1,6 @@
 <?php
 
-namespace PHPMailer\PHPMailer\model;
+namespace RMB\Logrofilm\model;
 
 class User
 {

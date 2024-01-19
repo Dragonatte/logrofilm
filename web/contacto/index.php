@@ -73,7 +73,23 @@
     </main>
 
 	<footer>
-
+		<div class="logo">
+			<img src="../../public/res/img/logo.png" alt="Logo" class="logo-lg">
+			<div class="logo_text">
+				<h2>LOGROFILM</h2>
+				<p>Una red social para los <br> amantes del cine</p>
+			</div>
+		</div>
+		<div class="separador"></div>
+		<div class="legal">
+			<a>Pol&iacute;tica de Privacidad</a>
+			<a>Pol&iacute;tica de Cookies</a>
+			<a>Aviso Legal</a>
+		</div>
+		<div class="separador"></div>
+		<div class="acceso">
+			<a href="admin/login/">Acceso usuarios</a>
+		</div>
 	</footer>
 <script src="../../public/JS/script.js"></script>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
