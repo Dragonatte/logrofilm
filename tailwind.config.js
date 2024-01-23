@@ -4,9 +4,10 @@ module.exports = {
   content: [ './web/**/*.html' ],
   theme: {
     screens: {
-      mobil: '360px',
-      tablet: '768px',
-      desktop: '1024px',
+      phone: '576px',
+      phablet: '768px',
+      tablet: '920px',
+      laptop: '1124px',
     },
     colors: {
       "black": "#000",

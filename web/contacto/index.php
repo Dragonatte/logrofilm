@@ -69,7 +69,32 @@
 	</div>
 
     <main>
+	    <?php
+	    if(isset($_GET['status'])) {
+		    if($_GET['status'] == 'success') {
+			    echo '<div class="alert alert-success">Mensaje enviado correctamente</div>';
+		    } else if($_GET['status'] == 'error') {
+			    echo '<div class="alert alert-error">Error al enviar el mensaje</div>';
+		    }
+	    }
+	    ?>
+	    <form action="../../src/router/contactRouter.php" id="contact-form" method="post">
+		    <header class="header">
+	        <h1 class="log-head">Contacto</h1>
+		    </header>
 
+			  <input id="nombre" name="nombre" type="text" class="input" required>
+	      <label for="nombre" class="anim-label">Nombre</label>
+
+	      <input id="correo" name="correo" type="email" class="input" required>
+	      <label for="correo" class="anim-label">Email</label>
+
+			  <textarea id="mensaje" name="mensaje" class="input" placeholder="Mensaje..." required></textarea>
+
+		    <div class="footer">
+	        <button class="button">Enviar mensaje</button>
+			  </div>
+	    </form>
     </main>
 
 	<footer>
@@ -88,10 +113,10 @@
 		</div>
 		<div class="separador"></div>
 		<div class="acceso">
-			<a href="admin/login/">Acceso usuarios</a>
+			<a href="../admin/login/">Acceso usuarios</a>
 		</div>
 	</footer>
-<script src="../../public/JS/script.js"></script>
+<script src="../../public/JS/actions.js"></script>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>

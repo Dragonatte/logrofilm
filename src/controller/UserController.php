@@ -56,4 +56,9 @@ class UserController
             echo "Error al enviar el email: $mail->ErrorInfo";
         }
     }
+
+    public static function getUserByUserName(string $user_name): array | null
+    {
+        return UserModel::getUserByUserName($user_name);
+    }
 }

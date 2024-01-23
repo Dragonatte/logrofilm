@@ -25,4 +25,10 @@ class UserModel
         $query = "INSERT INTO usuario (USERNAME, EMAIL, PASSWORD) VALUES ('$username', '$email', '$password')";
         return BDController::insert($query);
     }
+
+    public static function getUserByUserName(string $user_name): array | null
+    {
+        $query = "SELECT * FROM usuario WHERE username = '$user_name'";
+        return BDController::query($query);
+    }
 }

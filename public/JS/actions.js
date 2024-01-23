@@ -22,15 +22,19 @@ window.onload = () => {
 		registerForm.classList.remove('slide-left');
 	}
 
-	toLogin.addEventListener('click', () => {
-		resetAnimation();
-		loginForm.classList.add('slide-right');
-		registerForm.classList.add('slide-right');
-	});
+	if(toLogin !== null) {
+		toLogin.addEventListener('click', () => {
+			resetAnimation();
+			loginForm.classList.add('slide-right');
+			registerForm.classList.add('slide-right');
+		});
+	}
 
-	toRegister.addEventListener('click', () => {
-		resetAnimation();
-		loginForm.classList.add('slide-left');
-		registerForm.classList.add('slide-left');
-	});
+	if(toRegister !== null) {
+		toRegister.addEventListener('click', () => {
+			resetAnimation();
+			loginForm.classList.add('slide-left');
+			registerForm.classList.add('slide-left');
+		});
+	}
 }

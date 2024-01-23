@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(isset($_SESSION['admin'])) {
+	header('Location: ../dashboard/');
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,7 +15,7 @@
 </head>
 <body class="admin-body">
   <form action="admin_login.php" method="post" class="wrapper" id="admin-login-form">
-	  <header class="admin-header">
+	  <header class="admin-login-header">
 		  <h1 class="log-head">Iniciar sesión</h1>
 	  </header>
 		<?php

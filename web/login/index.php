@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div class="card">
-    <form action="login" method="post" class="wrapper" id="loginForm">
+    <form action="../../src/router/UserRouter/LoginRouter.php" method="post" class="wrapper" id="loginForm">
 	    <header class="header">
         <h1 class="log-head">Iniciar sesión</h1>
 	    </header>
@@ -25,7 +25,7 @@
 	    </div>
     </form>
 
-    <form action="signin" method="post" class="wrapper" id="registerForm">
+    <form action="../../src/router/UserRouter/SignupRouter.php" method="post" class="wrapper" id="registerForm">
 	    <header class="header">
 	      <h1 class="log-head">Registrarse</h1>
 		  </header>

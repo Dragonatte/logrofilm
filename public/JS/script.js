@@ -144,39 +144,49 @@ const loadPelis = async () => {
       break;
   }
   let divPeli;
-  pelisLasCanas[diaActivo].forEach( peli => {
+  if(pelisLasCanas[diaActivo].length === 0) {
     divPeli = document.createElement('div');
     divPeli.classList.add('peli');
-    const img = document.createElement('img');
-    img.src = peli.cartel;
-    divPeli.appendChild(img);
-    const divInfo = document.createElement('div');
-    divInfo.classList.add('info');
+    divPeli.classList.add('no-peli');
     const h3 = document.createElement('h3');
-    h3.innerText = peli.titulo;
-    divInfo.appendChild(h3);
-    const divHoras = document.createElement('div');
-    divHoras.classList.add('horas');
-    peli.horas.forEach( hora => {
-      const span = document.createElement('span');
-      span.innerText = hora;
-      divHoras.appendChild(span);
-    });
-    divInfo.appendChild(divHoras);
-    const divGenero = document.createElement('p');
-    divGenero.classList.add('genero');
-    divGenero.innerText = peli.genero;
-    divInfo.appendChild(divGenero);
-    const divDuracion = document.createElement('p');
-    divDuracion.classList.add('duracion');
-    divDuracion.innerText = peli.duracion + ' ';
-    const timeIcon = document.createElement('ion-icon');
-    timeIcon.name = 'time-outline';
-    divDuracion.appendChild(timeIcon);
-    divInfo.appendChild(divDuracion);
-    divPeli.appendChild(divInfo);
+    h3.innerText = 'Aún no hay películas disponibles';
+    divPeli.appendChild(h3);
     pelis.appendChild(divPeli);
-  });
+  } else {
+    pelisLasCanas[diaActivo].forEach(peli => {
+      divPeli = document.createElement('div');
+      divPeli.classList.add('peli');
+      const img = document.createElement('img');
+      img.src = peli.cartel;
+      divPeli.appendChild(img);
+      const divInfo = document.createElement('div');
+      divInfo.classList.add('info');
+      const h3 = document.createElement('h3');
+      h3.innerText = peli.titulo;
+      divInfo.appendChild(h3);
+      const divHoras = document.createElement('div');
+      divHoras.classList.add('horas');
+      peli.horas.forEach(hora => {
+        const span = document.createElement('span');
+        span.innerText = hora;
+        divHoras.appendChild(span);
+      });
+      divInfo.appendChild(divHoras);
+      const divGenero = document.createElement('p');
+      divGenero.classList.add('genero');
+      divGenero.innerText = peli.genero;
+      divInfo.appendChild(divGenero);
+      const divDuracion = document.createElement('p');
+      divDuracion.classList.add('duracion');
+      divDuracion.innerText = peli.duracion + ' ';
+      const timeIcon = document.createElement('ion-icon');
+      timeIcon.name = 'time-outline';
+      divDuracion.appendChild(timeIcon);
+      divInfo.appendChild(divDuracion);
+      divPeli.appendChild(divInfo);
+      pelis.appendChild(divPeli);
+    });
+  }
 
   cartelera.appendChild(pelis);
 }

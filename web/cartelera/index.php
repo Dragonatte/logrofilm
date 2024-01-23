@@ -276,7 +276,7 @@
 		</div>
 		<div class="separador"></div>
 		<div class="acceso">
-			<a href="admin/login/">Acceso usuarios</a>
+			<a href="../admin/login/">Acceso usuarios</a>
 		</div>
 	</footer>
 <script src="../../public/JS/script.js"></script>
