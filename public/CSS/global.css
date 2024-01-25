@@ -946,10 +946,61 @@ textarea
 
 .main-admin
 {
-	@apply absolute bg-gray-200 rounded-3xl !important;
+	@apply absolute bg-gray-200 rounded-3xl overflow-y-scroll overflow-x-hidden !important;
 	left: 310px;
 	top: 148px;
 	width: calc(100% - 320px);
 	height: calc(100vh - 158px);
 	box-shadow: #333333 0 0 10px 0;
+}
+
+.main-admin::-webkit-scrollbar
+{
+	width: 10px;
+}
+
+.main-admin::-webkit-scrollbar-track
+{
+	background: transparent;
+}
+
+.main-admin::-webkit-scrollbar-thumb
+{
+	@apply bg-default-600 rounded-full;
+}
+
+#table
+{
+	@apply m-8 w-full h-full overflow-y-scroll;
+}
+
+#table button
+{
+	@apply px-4 py-2 rounded-xl text-white transition ease-in-out duration-200 antialiased;
+}
+
+#table button:hover
+{
+	@apply scale-110;
+}
+
+.delete
+{
+	@apply bg-secondary-500;
+}
+
+.edit
+{
+	@apply bg-default-500;
+}
+
+#main-search
+{
+	display: grid;
+	grid-template-columns: 10% 90%;
+}
+
+#search-aside
+{
+	@apply relative flex flex-col items-center h-full;
 }

@@ -29,15 +29,17 @@
       </ul>
       <ul>
 	      <li>
-		      <label>
-			      <input type="text" placeholder="Buscar..." class="input" id="buscar"/>
-			      <span>
-				      <button class="ion-button">
-					      <ion-icon name="search-outline"></ion-icon>
-				      </button>
-			      </span>
-		      </label>
-        </li>
+			  <form method="post" action="./busqueda/">
+					<label>
+					<input type="text" placeholder="Buscar..." class="input mb-4"/>
+					<span>
+				    <button class="ion-button">
+							<ion-icon name="search-outline"></ion-icon>
+				    </button>
+					</span>
+					</label>
+			  </form>
+		  </li>
         <li>
 <?php
 				if(isset($_SESSION['user'])) {

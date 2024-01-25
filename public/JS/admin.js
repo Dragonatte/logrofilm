@@ -1,5 +1,6 @@
 const listas = ['Categor&iacute;as', 'Pel&iacute;culas', 'Comentarios', 'Valoraciones', 'Usuarios'];
 const fichas = ['Categor&iacute;as', 'Pel&iacute;culas', 'Usuarios'];
+const url = 'http://localhost:8000/logrofim-api/api/';
 
 window.onload = async () => {
 	const nav = document.getElementById('nav');
@@ -8,6 +9,7 @@ window.onload = async () => {
 	await cargarListas(nav, p);
 	const aside = await document.getElementById('aside');
 	await addEventListeners(nav, aside, p);
+	await load('generos');
 }
 
 const cargarListas = async (nav, p) => {
@@ -23,6 +25,25 @@ const cargarListas = async (nav, p) => {
 			  const active = document.getElementsByClassName('active')[1];
 			  active.classList.remove('active');
 			  e.target.classList.add('active');
+				switch (e.target.innerHTML) {
+					case 'Categorías':
+						load('generos');
+						break;
+					case 'Películas':
+						load('pelis');
+						break;
+					case 'Comentarios':
+						load('comentarios');
+						break;
+					case 'Valoraciones':
+						load('valoraciones');
+						break;
+					case 'Usuarios':
+						load('usuarios');
+						break;
+					default:
+						break;
+				}
       });
 			aside.appendChild(li);
 		});
@@ -63,6 +84,54 @@ const addEventListeners = async (nav, aside, p) => {
 	});
 }
 
-const load = async (resource) => {
+const load = (resource) => {
+	fetch(url + resource)
+		.then(response => response.json())
+		.then(data => {
+			const main = document.getElementsByClassName('main-admin')[0];
+			const table = document.createElement('table');
+			table.id = 'table';
+			const thead = document.createElement('thead');
+			const tbody = document.createElement('tbody');
+			const tr = document.createElement('tr');
+			Object.keys(Object.values(data)[0]).forEach((i) => {
+				const th = document.createElement('th');
+				th.innerHTML = i;
+				tr.appendChild(th);
+			});
 
+			thead.appendChild(tr);
+			table.appendChild(thead);
+			Object.values(data).forEach((value) => {
+				const tr = document.createElement('tr');
+				for(let i = 0; i < Object.keys(value).length ; i++) {
+					const td = document.createElement('td');
+					td.innerHTML = Object.values(value)[i];
+					tr.appendChild(td);
+				}
+				const tdEd = document.createElement('td');
+				const buttonEd = document.createElement('button');
+				buttonEd.innerHTML = 'Editar';
+				buttonEd.classList.add('edit');
+				buttonEd.addEventListener('click', () => {
+					console.log('Editar');
+				});
+				tdEd.appendChild(buttonEd);
+				tr.appendChild(tdEd);
+				const tdDe = document.createElement('td');
+				const buttonDe = document.createElement('button');
+				buttonDe.innerHTML = 'Eliminar';
+				buttonDe.classList.add('delete');
+				buttonDe.addEventListener('click', () => {
+					console.log('Eliminar');
+				});
+				tdDe.appendChild(buttonDe);
+				tr.appendChild(tdDe);
+
+				tbody.appendChild(tr);
+			});
+			table.appendChild(tbody);
+			main.appendChild(table);
+		})
+		.catch(error => console.error(error))
 }

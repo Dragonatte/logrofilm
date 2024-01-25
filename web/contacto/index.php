@@ -21,23 +21,25 @@
         <a href="../mapa/" class="link-sp">Mapa de cines</a>
       </li>
             <li>
-        <a href="#" class="link-sp">Cartelera</a>
+        <a href="../cartelera/" class="link-sp">Cartelera</a>
       </li>
       <li>
-        <a href="../contacto/" class="link-sp">Contacto</a>
+        <a href="#" class="link-sp">Contacto</a>
       </li>
     </ul>
     <ul>
-	  <li>
-		<label>
-		<input type="text" placeholder="Buscar..." class="input mb-4"/>
-		<span>
-		  <button class="ion-button">
-			<ion-icon name="search-outline"></ion-icon>
-		  </button>
-		</span>
-		</label>
-      </li>
+		  <li>
+			  <form method="post" action="../busqueda/">
+					<label>
+					<input type="text" placeholder="Buscar..." class="input mb-4"/>
+					<span>
+				    <button class="ion-button">
+							<ion-icon name="search-outline"></ion-icon>
+				    </button>
+					</span>
+					</label>
+			  </form>
+		  </li>
       <li>
 <?php
         if(isset($_SESSION['user'])) {
