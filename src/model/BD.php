@@ -5,12 +5,14 @@ namespace RMB\Logrofilm\model;
 use PDO;
 use PDOException;
 
-class BDController
+include_once __DIR__ . '/../config/config.php';
+
+class BD
 {
     private static function connect(): PDO | null
     {
         try {
-            $pdo = new PDO('mysql:host=localhost;dbname=phpmailer;charset=utf8', 'root', '');
+            $pdo = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8', DB_USER, DB_PASSWORD);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $pdo;
         } catch (PDOException $e) {
@@ -38,6 +40,19 @@ class BDController
     }
 
     public static function insert(string $query): bool
+    {
+        try {
+            $pdo = self::connect();
+            $stmt = $pdo->prepare($query);
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            echo 'Error al ejecutar la consulta: ' . $e->getMessage();
+            return false;
+        }
+    }
+
+    public static function update(string $query)
     {
         try {
             $pdo = self::connect();

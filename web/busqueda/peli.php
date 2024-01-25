@@ -64,14 +64,58 @@
       </ul>
     </nav>
 	</header>
-	<div id="background">
-		<?php
-		require_once __DIR__ . '/../../src/components/circles.php';
-		?>
-	</div>
 
-    <main>
+  	<div id="background">
+			<?php
+			require_once __DIR__ . '/../../src/components/circles.php';
+			?>
+		</div>
 
+
+  <main id="peliculas">
+	    <div id = peli_info>
+				<aside id="pelis_img">
+					<img src="<?php echo $_GET['poster']?>" alt="<?php echo $_GET['titulo'] ?>">
+				</aside>
+		    <section id="pelis_info">
+	        <h1><?php echo $_GET['titulo'] ?></h1>
+	        <h2><?php echo $_GET['titulo_original'] ?></h2>
+	        <p><?php echo $_GET['sinopsis'] ?></p>
+			    <p><?php echo $_GET['duracion'] ?> minutos.</p>
+			    <p>A&ntilde;o <?php echo $_GET['anno'] ?></p>
+		    </section>
+		  </div>
+	    <div id="comentar">
+		    <form action="../../src/controller/comentar.php" method="post">
+			    <input type="hidden" name="id_pelicula" value="<?php echo $_GET['id_pelicula'] ?>">
+			    <input type="hidden" name="id_usuario" value="<?php echo $_SESSION['user']['id_usuario'] ?? '' ?>">
+			    <label>
+				    <textarea name="comentario" id="comentario" cols="98" rows="2" placeholder="Escribe tu comentario..."></textarea>
+				  </label>
+			    <input type="submit" value="Comentar">
+		    </form>
+		    <form action="../../src/controller/valorar.php" method="post">
+			    <input type="hidden" name="id_pelicula" value="<?php echo $_GET['id_pelicula'] ?>">
+			    <input type="hidden" name="id_usuario" value="<?php echo $_SESSION['user']['id_usuario'] ?? '' ?>">
+			    <label for="valoracion">
+				    <input type="range" list="mydata" name="valoracion" id="valoracion" min="0" max="10" step="1">
+				    <datalist id="mydata">
+					    <option value="0">0</option>
+					    <option value="1">1</option>
+					    <option value="2">2</option>
+					    <option value="3">3</option>
+					    <option value="4">4</option>
+					    <option value="5">5</option>
+					    <option value="6">6</option>
+					    <option value="7">7</option>
+					    <option value="8">8</option>
+					    <option value="9">9</option>
+					    <option value="10">10</option>
+					  </datalist>
+			    </label>
+			    <input type="submit" value="Valorar">
+		    </form>
+	    </div>
     </main>
 
 	<footer>
@@ -93,7 +137,7 @@
 			<a href="../admin/login/">Acceso usuarios</a>
 		</div>
 	</footer>
-<script src="../../public/JS/actions.js"></script>
+<script src="../../public/JS/load_peli.js"></script>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>

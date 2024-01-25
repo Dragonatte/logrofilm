@@ -1004,3 +1004,129 @@ textarea
 {
 	@apply relative flex flex-col items-center h-full;
 }
+
+footer
+{
+	@apply top-full
+}
+
+main#peliculas
+{
+	@apply relative flex flex-col items-center justify-center p-10;
+}
+
+#peli_info
+{
+	@apply mt-32 relative items-center justify-center backdrop-blur-xl border border-white/25 rounded-xl;
+	display: grid;
+	grid-template-columns: 1fr 3fr;
+	gap: 10rem;
+	background: linear-gradient(45deg, rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
+	z-index: 10;
+}
+
+#pelis_img img
+{
+	@apply w-full h-full rounded-xl;
+}
+
+#pelis_info
+{
+	@apply flex flex-col items-start justify-center;
+}
+
+#pelis_info h1
+{
+	@apply mb-4 text-5xl font-bold text-white/50;
+}
+
+#pelis_info h2
+{
+	@apply mb-4 text-3xl font-bold text-white/50;
+}
+
+#pelis_info p {
+	@apply mb-4 text-2xl text-white/50;
+}
+
+#comentar
+{
+	@apply mt-4 p-4 relative items-center justify-center backdrop-blur-xl border border-white/25 rounded-xl;
+	display: grid;
+	grid-template-columns: 5fr 3fr;
+	gap: 2rem;
+	background: linear-gradient(45deg, rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
+	z-index: 10;
+}
+
+#comentar form
+{
+	@apply flex items-center justify-center;
+}
+
+#comentar form input
+{
+	@apply mx-5
+}
+
+#comentar form input[type="submit"]
+{
+	@apply w-40 h-16 rounded-xl text-white/50 text-xl border border-white/25 backdrop-blur-lg transition ease-in-out duration-200 antialiased;
+	background: linear-gradient(45deg, rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.1));
+}
+
+#comentar form input[type="submit"]:hover {
+	@apply scale-110 bg-default-500 text-white;
+}
+
+[type="range"]
+{
+	@apply p-0;
+}
+
+#comentar form input:not([type="submit"]):not([type="range"])
+{
+	@apply w-full h-16 border border-white/25 rounded-xl p-4 text-white/50;
+}
+
+#comentar form textarea
+{
+	@apply w-full h-16 border border-white/25 rounded-xl p-4 text-white/50 resize-none;
+	background: linear-gradient(45deg, rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.1));
+}
+
+#comentar form textarea:focus
+{
+	@apply outline-none border-white/75;
+}
+
+.toast_card
+{
+	@apply absolute top-0 left-1/2 -translate-y-full -translate-x-1/2 w-fit h-16 px-4 py-8 text-xl flex items-center justify-center text-white rounded-xl border border-white/25 backdrop-blur-lg;
+	background: linear-gradient(45deg, rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.1));
+	z-index: 999;
+	animation-name: toast;
+	animation-duration: 3s;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-in-out;
+}
+
+@keyframes toast
+{
+	0%
+	{
+		@apply -top-24;
+	}
+	25%
+	{
+		@apply top-24;
+	}
+	75%
+	{
+		@apply top-24;
+	}
+	100%
+	{
+		@apply -top-24;
+	}
+}

@@ -63,6 +63,14 @@
       </ul>
     </nav>
 	</header>
+
+	<?php if(isset($_GET['user'])) { ?>
+		<div class="toast_card">
+			<h1>Valida tu usario entrando en tu correo</h1>
+		</div>
+	<?php }?>
+
+
 	<main>
 		<h1></h1>
 		<div id="background">

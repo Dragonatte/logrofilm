@@ -2,18 +2,22 @@
 
 namespace RMB\Logrofilm\model;
 
+require_once __DIR__ . '/BD.php';
+use RMB\Logrofilm\model\BD;
+
+
 class UserModel
 {
     public static function getAll(): array | null
     {
         $query = 'SELECT * FROM usuario';
-        return BDController::query($query);
+        return BD::query($query);
     }
 
     public static function getUserByEmail(string $email): array | null
     {
         $query = "SELECT * FROM usuario WHERE email = '$email'";
-        return BDController::query($query);
+        return BD::query($query);
     }
 
     public static function insert(User $user): bool
@@ -23,12 +27,18 @@ class UserModel
         $password = $user->getPassword();
 
         $query = "INSERT INTO usuario (USERNAME, EMAIL, PASSWORD) VALUES ('$username', '$email', '$password')";
-        return BDController::insert($query);
+        return BD::insert($query);
     }
 
     public static function getUserByUserName(string $user_name): array | null
     {
         $query = "SELECT * FROM usuario WHERE username = '$user_name'";
-        return BDController::query($query);
+        return BD::query($query);
+    }
+
+    public static function validarUser(int $id)
+    {
+        $query = "UPDATE usuario SET VALIDADO = 1 WHERE id = $id";
+        return BD::update($query);
     }
 }

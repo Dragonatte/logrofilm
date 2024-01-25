@@ -3,8 +3,14 @@
 namespace RMB\Logrofilm\controller;
 
 use Exception;
+
+require_once __DIR__ . '/../model/User.php';
 use RMB\Logrofilm\model\User;
+
+require_once __DIR__ . '/../model/UserModel.php';
 use RMB\Logrofilm\model\UserModel;
+
+require_once __DIR__ . '/../../vendor/autoload.php';
 use PHPMailer\PHPMailer\PHPMailer;
 
 class UserController
@@ -19,10 +25,14 @@ class UserController
         return UserModel::getUserByEmail($email);
     }
 
-    public static function insert(User $user): void
+    public static function insert(User $user): bool
     {
         if(UserModel::insert($user)) {
             self::sendValidatorEmail($user);
+            return true;
+        }
+        else {
+            return false;
         }
     }
 
@@ -31,21 +41,22 @@ class UserController
         $mail = new PHPMailer(true);
         $email = $user->getEmail();
         $username = $user->getUsername();
-        $password = $user->getPassword();
+
+        $userFetchId = UserModel::getUserByEmail($email);
+        $id = $userFetchId['id'];
 
         $subject = 'Valida tu cuenta';
         $message = "
             <h1>Valida tu cuenta</h1>
             <p>Para validar tu cuenta, haz click en el siguiente enlace:</p>
-            <a href='http://localhost/phpmailer/src/controller/ValidatorController.php?email=$email&username=$username&password=$password'>Validar cuenta</a>
+            <a href='http://localhost:63342/logrofilm/web/validar/index.php?user=$id'>Validar cuenta</a>
         ";
 
         $headers = "From: PHPMailer <" . $email . ">\r\n";
         $headers .= "Reply-To: " . $email . "\r\n";
-        $headers .= "Content-type: text/html\r\n";
 
         try {
-            $mail->setFrom($email, $username);
+            $mail->setFrom('admin@logrofilm.es', 'Logrofilm Admin');
             $mail->addAddress($email, $username);
             $mail->Subject = $subject;
             $mail->Body = $message;
@@ -60,5 +71,10 @@ class UserController
     public static function getUserByUserName(string $user_name): array | null
     {
         return UserModel::getUserByUserName($user_name);
+    }
+
+    public static function validarUser(int $id)
+    {
+        return UserModel::validarUser($id);
     }
 }

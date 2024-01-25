@@ -25,7 +25,7 @@ fetch(url + 'pelis')
 				divInfo.classList.add('info');
 				const h3 = document.createElement('a');
 				h3.innerHTML = peli.TITULO;
-				h3.href = 'peli.php?id=' + peli.ID;
+				h3.href = `peli.php?id_pelicula=${peli.ID}&titulo=${peli.TITULO}&titulo_original=${peli.TITULO_ORIGINAL}&poster=${peli.POSTER}&anno=${peli.ANNO}&sinopsis=${peli.SINOPSIS}&duracion=${peli.DURACION}`;
 				divInfo.appendChild(h3);
 				const p = document.createElement('p');
 				p.innerHTML = peli.ANNO;

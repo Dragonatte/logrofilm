@@ -91,6 +91,10 @@ class User
 
     private function encrypt($password): string
     {
-        return password_hash($this->password, PASSWORD_BCRYPT, ['cost' => 4]);
+        return password_hash($password, PASSWORD_BCRYPT, ['cost' => 4]);
+    }
+
+    public function getID()
+    {
     }
 }
