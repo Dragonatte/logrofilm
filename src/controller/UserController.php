@@ -13,18 +13,43 @@ use RMB\Logrofilm\model\UserModel;
 require_once __DIR__ . '/../../vendor/autoload.php';
 use PHPMailer\PHPMailer\PHPMailer;
 
+/**
+ * Class UserController
+ * @package RMB\Logrofilm\controller
+ * @version 1.0
+ *
+ */
 class UserController
 {
+
+    /**
+     * @return array|null
+     *
+     * Devuelve un array con todos los usuarios de la base de datos
+     */
      public static function getAll(): array | null
     {
         return UserModel::getAll();
     }
+
+    /**
+     * @param string $email
+     * @return array|null
+     *
+     * Devuelve un array con el usuario que tenga el email pasado por parámetro
+     */
 
     public static function getUserByEmail(string $email): array | null
     {
         return UserModel::getUserByEmail($email);
     }
 
+    /**
+     * @param string $username
+     * @return array|null
+     *
+     * Devuelve un array con el usuario que tenga el username pasado por parámetro
+     */
     public static function insert(User $user): bool
     {
         if(UserModel::insert($user)) {
@@ -36,6 +61,12 @@ class UserController
         }
     }
 
+    /**
+     * @param User $user
+     * @return void
+     *
+     * Envía un email al usuario pasado por parámetro para que valide su cuenta
+     */
     private static function sendValidatorEmail(User $user): void
     {
         $mail = new PHPMailer(true);
@@ -77,11 +108,23 @@ class UserController
         }
     }
 
+    /**
+     * @param int $id
+     * @return bool
+     *
+     * Valida el usuario con el id pasado por parámetro
+     */
     public static function getUserByUserName(string $user_name): array | null
     {
         return UserModel::getUserByUserName($user_name);
     }
 
+    /**
+     * @param int $id
+     * @return bool
+     *
+     * Valida el usuario con el id pasado por parámetro
+     */
     public static function validarUser(int $id)
     {
         return UserModel::validarUser($id);
