@@ -1100,6 +1100,11 @@ main#peliculas
 	@apply outline-none border-white/75;
 }
 
+#comentar form label span
+{
+	@apply inline-block text-white/50 text-xl w-16;
+}
+
 .toast_card
 {
 	@apply absolute top-0 left-1/2 -translate-y-full -translate-x-1/2 w-fit h-16 px-4 py-8 text-xl flex items-center justify-center text-white rounded-xl border border-white/25 backdrop-blur-lg;
@@ -1129,4 +1134,19 @@ main#peliculas
 	{
 		@apply -top-24;
 	}
+}
+
+.user img
+{
+	@apply w-16 h-16 rounded-full;
+}
+
+.user
+{
+	@apply cursor-pointer;
+}
+
+#mensaje
+{
+	@apply resize-none;
 }

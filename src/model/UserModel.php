@@ -32,7 +32,7 @@ class UserModel
 
     public static function getUserByUserName(string $user_name): array | null
     {
-        $query = "SELECT * FROM usuario WHERE username = '$user_name'";
+        $query = "SELECT * FROM usuario WHERE username Like '$user_name'";
         return BD::query($query);
     }
 

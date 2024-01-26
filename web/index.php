@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -31,7 +33,7 @@
 	      <li>
 			  <form method="post" action="./busqueda/">
 					<label>
-					<input type="text" placeholder="Buscar..." class="input mb-4"/>
+					<input type="text" name="peli" placeholder="Buscar..." class="input mb-4"/>
 					<span>
 				    <button class="ion-button">
 							<ion-icon name="search-outline"></ion-icon>
@@ -40,26 +42,10 @@
 					</label>
 			  </form>
 		  </li>
-        <li>
-<?php
-				if(isset($_SESSION['user'])) {
-				echo `
-					<div class="user">
-						<img src={$_SESSION['user']['image']} alt="User" class="w-10 rounded-full m-5">
-						<div>
-							<p>{$_SESSION['user']['nombre']}</p>
-							<p>{$_SESSION['user']['email']}</p>
-						</div>
-					</div>`;
-				}
-				else {
-				echo '
-          <div class="mr-10">
-              <a href="./login/" class="link-login">Iniciar sesión</a>
-          </div>';
-				}
-?>
-        </li>
+		      <?php
+		      $_GET['sep'] = 1;
+		      require_once __DIR__ . '/../src/components/avatar.php';
+		      ?>
       </ul>
     </nav>
 	</header>
@@ -69,7 +55,6 @@
 			<h1>Valida tu usario entrando en tu correo</h1>
 		</div>
 	<?php }?>
-
 
 	<main>
 		<h1></h1>
@@ -123,7 +108,8 @@
 		</div>
 	</footer>
 
-	<script src="../public/JS/script.js"></script>
+	<script src="../public/JS/main.js"></script>
+	<script src="../public/JS/slider.js"></script>
 	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>

@@ -39,11 +39,19 @@ class UserController
     private static function sendValidatorEmail(User $user): void
     {
         $mail = new PHPMailer(true);
+        $mail->SMTPDebug = 0;
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'rodrigomurillo99@gmail.com';
+        $mail->Password = 'qzcd tkne ents puwc';
+
         $email = $user->getEmail();
         $username = $user->getUsername();
 
-        $userFetchId = UserModel::getUserByEmail($email);
-        $id = $userFetchId['id'];
+        $userFetchId = UserModel::getUserByEmail($email)[0];
+        $id = $userFetchId['ID'];
+
 
         $subject = 'Valida tu cuenta';
         $message = "
@@ -56,8 +64,9 @@ class UserController
         $headers .= "Reply-To: " . $email . "\r\n";
 
         try {
-            $mail->setFrom('admin@logrofilm.es', 'Logrofilm Admin');
-            $mail->addAddress($email, $username);
+            $mail->setFrom('rodrigomurillo99@gmail.com');
+            $mail->addAddress($email);
+            $mail->isHTML();
             $mail->Subject = $subject;
             $mail->Body = $message;
             $mail->send();

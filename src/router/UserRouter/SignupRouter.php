@@ -13,7 +13,7 @@ if(isset($_POST['email']) && isset($_POST['new-pass']) && isset($_POST['new-user
 
     if($user !== null)
     {
-        $user = new User($email, $password, $_POST['new-user']);
+        $user = new User($_POST['new-user'], $email, $password);
         $res = UserController::insert($user);
         if($res) {
             header('Location: ../../../web/index.php?user=created');

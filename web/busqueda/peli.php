@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -41,25 +42,20 @@
 			  </form>
 		  </li>
       <li>
-<?php
-        if(isset($_SESSION['user'])) {
-        echo `
-            <div class="user">
-                <img src={$_SESSION['user']['image']} alt="User" class="w-10 rounded-full m-5">
-                <div>
-                    <p>{$_SESSION['user']['nombre']}</p>
-                    <p>{$_SESSION['user']['email']}</p>
-                </div>
-            </div>`;
-        }
-        else
-        {
-        echo '
-        <div class="mr-10">
-          <a href="../login/" class="link-login">Iniciar sesión</a>
-        </div>';
-		}
-?>
+			<?php if(isset($_SESSION['user'])) { ?>
+					<div class="user">
+						<img src="<?php echo $_SESSION['user']['IMAGEN'] ?>" alt="User" class="w-10 rounded-full m-5">
+						<div>
+							<p><?php echo $_SESSION['user']['USERNAME'] ?></p>
+							<p><?php echo $_SESSION['user']['EMAIL'] ?></p>
+						</div>
+					</div>
+				<?php } else { ?>
+
+          <div class="mr-10">
+              <a href="./login/" class="link-login">Iniciar sesión</a>
+          </div>
+				<?php } ?>
         </li>
       </ul>
     </nav>
@@ -98,7 +94,7 @@
 			    <input type="hidden" name="id_pelicula" value="<?php echo $_GET['id_pelicula'] ?>">
 			    <input type="hidden" name="id_usuario" value="<?php echo $_SESSION['user']['id_usuario'] ?? '' ?>">
 			    <label for="valoracion">
-				    <input type="range" list="mydata" name="valoracion" id="valoracion" min="0" max="10" step="1">
+				    <input type="range" list="mydata" name="valoracion" id="valoracion" min="0" max="10" step="1"><span id="val-val"></span>
 				    <datalist id="mydata">
 					    <option value="0">0</option>
 					    <option value="1">1</option>
@@ -137,6 +133,7 @@
 			<a href="../admin/login/">Acceso usuarios</a>
 		</div>
 	</footer>
+<script src="../../public/JS/main.js"></script>
 <script src="../../public/JS/load_peli.js"></script>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

@@ -7,19 +7,19 @@ if(isset($_POST['user']) && isset($_POST['pass'])) {
     $user_name = $_POST['user'];
     $password = $_POST['pass'];
 
-    $user = UserController::getUserByUserName($user_name) ?? null;
+    $user = UserController::getUserByUserName($user_name)[0] ?? null;
 
     if($user) {
-        if(password_verify($password, $user['password'])) {
+        if(password_verify($password, $user['PASSWORD'])) {
             session_start();
             $_SESSION['user'] = $user;
-            header('Location: ../../web/');
+            header('Location: ../../../web/');
         }
         else {
-            header('Location: ../../web/login/');
+            header('Location: ../../../web/login/');
         }
     }
     else {
-        header('Location: ../../web/login/');
+        header('Location: ../../../web/login/');
     }
 }

@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -40,26 +41,10 @@
 					</label>
 			  </form>
 		  </li>
-        <li>
-<?php
-				if(isset($_SESSION['user'])) {
-				echo `
-					<div class="user">
-						<img src={$_SESSION['user']['image']} alt="User" class="w-10 rounded-full m-5">
-						<div>
-							<p>{$_SESSION['user']['nombre']}</p>
-							<p>{$_SESSION['user']['email']}</p>
-						</div>
-					</div>`;
-				}
-				else {
-				echo '
-          <div class="mr-10">
-              <a href="../login/" class="link-login">Iniciar sesión</a>
-          </div>';
-				}
-?>
-        </li>
+      <?php
+		      $_GET['sep'] = 2;
+		      require_once __DIR__ . '/../../src/components/avatar.php';
+		      ?>
       </ul>
     </nav>
 	</header>
@@ -281,6 +266,7 @@
 			<a href="../admin/login/">Acceso usuarios</a>
 		</div>
 	</footer>
+		<script src="../../public/JS/main.js"></script>
 <script src="../../public/JS/script.js"></script>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

@@ -89,12 +89,16 @@ const load = (resource) => {
 		.then(response => response.json())
 		.then(data => {
 			const main = document.getElementsByClassName('main-admin')[0];
+			while (main.firstChild) main.removeChild(main.firstChild);
 			const table = document.createElement('table');
 			table.id = 'table';
 			const thead = document.createElement('thead');
 			const tbody = document.createElement('tbody');
 			const tr = document.createElement('tr');
 			Object.keys(Object.values(data)[0]).forEach((i) => {
+				if(i === 'POSTER') return;
+				if(i === 'BACKDROP') return;
+				if(i === 'SINOPSIS') return;
 				const th = document.createElement('th');
 				th.innerHTML = i;
 				tr.appendChild(th);
@@ -105,6 +109,9 @@ const load = (resource) => {
 			Object.values(data).forEach((value) => {
 				const tr = document.createElement('tr');
 				for(let i = 0; i < Object.keys(value).length ; i++) {
+					if(Object.keys(value)[i] === 'POSTER') continue;
+					if(Object.keys(value)[i] === 'BACKDROP') continue;
+					if(Object.keys(value)[i] === 'SINOPSIS') continue;
 					const td = document.createElement('td');
 					td.innerHTML = Object.values(value)[i];
 					tr.appendChild(td);
