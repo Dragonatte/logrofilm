@@ -7,8 +7,20 @@ use PDOException;
 
 include_once __DIR__ . '/../config/config.php';
 
+/**
+ * Class BD
+ * @package RMB\Logrofilm\model
+ * @version 1.0
+ *
+ * Clase que se encarga de la conexión con la base de datos
+ */
 class BD
 {
+    /**
+     * @return PDO|null
+     *
+     * Función que se encarga de la conexión con la base de datos
+     */
     private static function connect(): PDO | null
     {
         try {
@@ -21,11 +33,22 @@ class BD
         }
     }
 
+    /**
+     * @return PDO|null
+     *
+     * Función que devuelve la conexión con la base de datos
+     */
     public static function getConn(): PDO | null
     {
         return self::connect();
     }
 
+    /**
+     * @param string $query
+     * @return array|null
+     *
+     * Función que ejecuta una consulta y devuelve un array con los resultados
+     */
     public static function query(string $query): array | null
     {
         try {
@@ -39,6 +62,12 @@ class BD
         }
     }
 
+    /**
+     * @param string $query
+     * @return bool
+     *
+     * Función que ejecuta una consulta y devuelve true si se ha ejecutado correctamente
+     */
     public static function insert(string $query): bool
     {
         try {
@@ -52,6 +81,12 @@ class BD
         }
     }
 
+    /**
+     * @param string $query
+     * @return bool
+     *
+     * Función que ejecuta una consulta y devuelve true si se ha ejecutado correctamente
+     */
     public static function update(string $query)
     {
         try {
